@@ -47,7 +47,7 @@ Then, add authentication parameters to your `client` instance right after you cr
 client = Crisp()
 
 # Authenticate to API (identifier, key)
-# eg. client.authenticate("13937834-f6ce-4556-ae4f-9e0c54faf038", "eb6c3623245521d7a6c35f5b29f3fa756e893f034ed551d84518961c5ff16dec")
+# eg. client.authenticate("5c0595b2-9381-4a76-a2e0-04aa00c1ede7", "3bdb0812d0f5352bf68901ddc731434dade419b98507971905acdd2f967df61c")
 client.authenticate(identifier, key)
 
 # Now, you can use authenticated API sections.
@@ -67,10 +67,10 @@ When calling a method that writes data to the API (eg: `client.user.create_user_
 
 ```ruby
 client.user.create_user_account({
-  "email": "john@acme-inc.com",
-  "password": "SecurePassword",
-  "first_name": "John",
-  "last_name": "Doe"
+  "email" => "john@acme-inc.com",
+  "password" => "SecurePassword",
+  "first_name" => "John",
+  "last_name" => "Doe"
 })
 ```
 
