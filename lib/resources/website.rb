@@ -186,7 +186,7 @@ module Crisp
     end
 
     def add_new_people_profile(website_id, data)
-      return @parent.post(self._url_website(website_id, "/people/profile"))
+      return @parent.post(self._url_website(website_id, "/people/profile"), data: data)
     end
 
     def check_people_profile_exists(website_id, people_id)
