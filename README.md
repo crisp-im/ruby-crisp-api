@@ -118,6 +118,7 @@ client.website.send_message_in_conversation(
   * **Check If People Profile Exists**: `client.website.check_people_profile_exists(website_id, people_id)`
   * **Get People Profile**: `client.website.get_people_profile(website_id, people_id)`
   * **Save People Profile**: `client.website.save_people_profile(website_id, people_id, data)`
+  * **Find People Profile By Email**: `find_people_profile_by_email(website_id, email)`
   * **Update People Profile**: `client.website.update_people_profile(website_id, people_id, data)`
   * **Remove People Profile**: `client.website.remove_people_profile(website_id, people_id)`
   * **List People Conversations**: `client.website.list_people_conversations(website_id, people_id, page_number)`
