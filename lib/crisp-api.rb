@@ -89,7 +89,7 @@ module Crisp
           :payload => (data ? data.to_json : nil),
 
           :headers => {
-            :user_agent => "ruby-crisp-api/1.0.3",
+            :user_agent => "ruby-crisp-api/1.0.4",
             :accept => :json,
             :content_type => :json,
             :params => query
