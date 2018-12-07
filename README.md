@@ -21,7 +21,7 @@ Then, import it:
 require 'crisp-api'
 ```
 
-Construct a new authenticated Crisp client with your `identifier` and `key` tokens.
+Build a new authenticated Crisp client with your `identifier` and `key` tokens.
 
 ```ruby
 client = Crisp::Client.new
@@ -44,7 +44,7 @@ If authentication succeeds, you will get a JSON response containing your authent
 Then, add authentication parameters to your `client` instance right after you create it:
 
 ```ruby
-client = Crisp()
+client = Crisp::Client.new
 
 # Authenticate to API (identifier, key)
 # eg. client.authenticate("5c0595b2-9381-4a76-a2e0-04aa00c1ede7", "3bdb0812d0f5352bf68901ddc731434dade419b98507971905acdd2f967df61c")
