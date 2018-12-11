@@ -87,7 +87,7 @@ client.website.send_message_in_conversation(
   * **List Conversations**: `client.website.list_conversations(website_id, page_number)`
 
 * **Website Conversation**
-  * **Create A New Conversation**: `client.website.create_new_conversation(website_id, data)`
+  * **Create A New Conversation**: `client.website.create_new_conversation(website_id)`
   * **Check If Conversation Exists**: `client.website.check_conversation_exists(website_id, session_id)`
   * **Get A Conversation**: `client.website.get_conversation(website_id, session_id)`
   * **Remove A Conversation**: `client.website.remove_conversation(website_id, session_id)`
