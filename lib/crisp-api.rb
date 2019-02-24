@@ -10,7 +10,6 @@ require 'json'
 
 require_relative 'errors/route'
 require_relative 'resources/bucket'
-require_relative 'resources/user'
 require_relative 'resources/website'
 
 module Crisp
@@ -19,14 +18,12 @@ module Crisp
     attr_writer :rest_base_path
 
     attr_accessor :bucket
-    attr_accessor :user
     attr_accessor :website
 
     def initialize()
       @auth = {}
 
       @bucket = Crisp::BucketResource.new(self)
-      @user = Crisp::UserResource.new(self)
       @website = Crisp::WebsiteResource.new(self)
     end
 
