@@ -98,7 +98,7 @@ module Crisp
     end
 
     def remove_conversation(website_id, session_id)
-      return @parent.delete(self._url_conversation(website_id, session_id, ""))
+      return @parent.remove(self._url_conversation(website_id, session_id, ""))
     end
 
     def initiate_conversation_with_existing_session(website_id, session_id)
