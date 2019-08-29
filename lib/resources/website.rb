@@ -243,5 +243,9 @@ module Crisp
     def update_people_subscription_status(website_id, people_id, data)
       return @parent.patch(self._url_people("subscription", website_id, people_id, ""), data: data)
     end
+
+    def get_session_id_by_token(website_id, token)
+      return @parent.get(self._url_website(website_id, "/visitors/token/#{token}"))
+    end
   end
 end
