@@ -13,5 +13,5 @@ Gem::Specification.new do |s|
   s.license       = 'MIT'
   s.require_paths = ['lib']
 
-  s.add_dependency 'rest-client', '~> 2.0.0'
+  s.add_dependency 'rest-client', '~> 2.0'
 end
