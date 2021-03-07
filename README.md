@@ -149,7 +149,7 @@ client.website.send_message_in_conversation(
 * **Website Visitors**
   * **Count Visitors**: `client.website.count_visitors(website_id)`
   * **List Visitors**: `client.website.list_visitors(website_id, page_number)`
-  * **Get Session ID**: `client.website.get_session_id_from_token(website_id, token)`
+  * **Get Session ID**: `client.website.get_session_id_by_token(website_id, token)`
 
 ### Bucket
 
