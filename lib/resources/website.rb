@@ -81,6 +81,14 @@ module Crisp
       return @parent.get(self._url_website(website_id, "/visitors/list/%d" % page_number))
     end
 
+    def search_conversations(website_id, page_number, **kwargs)
+      unless kwargs.present?
+        return list_conversations(website_id, page_number)
+      end
+
+      return @parent.get(self._url_website(website_id, "/conversations/%d?#{kwargs.to_query}" % page_number))
+    end
+
     def list_conversations(website_id, page_number)
       return @parent.get(self._url_website(website_id, "/conversations/%d" % page_number))
     end

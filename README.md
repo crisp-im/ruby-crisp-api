@@ -81,6 +81,7 @@ client.website.send_message_in_conversation(
 
 * **Website Conversations**
   * **List Conversations**: `client.website.list_conversations(website_id, page_number)`
+  * **Search Conversations**: `client.website.search_conversations(website_id, page_number, **kwargs)`
 
 * **Website Conversation**
   * **Create A New Conversation**: `client.website.create_new_conversation(website_id)`
