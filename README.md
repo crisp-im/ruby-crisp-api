@@ -12,13 +12,13 @@ Copyright 2019 Crisp IM SARL. See LICENSE for copying information.
 Add the library to your `Gemfile`:
 
 ```bash
-gem 'crisp-api', '~> 1.0'
+gem "crisp-api", "~> 1.1.2"
 ```
 
 Then, import it:
 
 ```ruby
-require 'crisp-api'
+require "crisp-api"
 ```
 
 Build a new authenticated Crisp client with your `identifier` and `key` tokens.
@@ -155,4 +155,3 @@ client.website.send_message_in_conversation(
 
 * **Bucket URL**
   * **Generate Bucket URL**: `client.bucket.generate_bucket_url(data)`
-

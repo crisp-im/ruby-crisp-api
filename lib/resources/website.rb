@@ -5,10 +5,28 @@
 # Author: Valerian Saliou <valerian@valeriansaliou.name>
 ##
 
-require 'rest-client'
+require "rest-client"
 
 module Crisp
   class WebsiteResource
+    SEARCH_CONVERSATIONS_QUERY_PARAMETERS = [
+      "search_query",
+      "search_type",
+      "search_operator",
+      "include_empty",
+      "filter_unread",
+      "filter_resolved",
+      "filter_not_resolved",
+      "filter_mention",
+      "filter_assigned",
+      "filter_unassigned",
+      "filter_date_start",
+      "filter_date_end",
+      "filter_date_end",
+      "order_date_created",
+      "order_date_updated",
+    ]
+
     def initialize(parent)
       @parent = parent
     end
@@ -81,8 +99,29 @@ module Crisp
       return @parent.get(self._url_website(website_id, "/visitors/list/%d" % page_number))
     end
 
-    def list_conversations(website_id, page_number)
-      return @parent.get(self._url_website(website_id, "/conversations/%d" % page_number))
+    def search_conversations(website_id, page_number = 0, search_query = "", search_type = "", search_operator = "", include_empty = "", filter_unread = "", filter_resolved = "", filter_not_resolved = "", filter_mention = "", filter_assigned = "", filter_unassigned = "", filter_date_start = "", filter_date_end = "", order_date_created = "", order_date_updated = "")
+      resource_url = ""
+      query_parameters = []
+
+      SEARCH_CONVERSATIONS_QUERY_PARAMETERS.each do |parameter|
+        parameter_value = binding.local_variable_get(parameter)
+
+        if parameter_value != ""
+          query_parameters.push("%s=%s" % [parameter, CGI.escape(parameter_value).gsub("+", "%20")])
+        end
+      end
+
+      if query_parameters != []
+        resource_url = self._url_website(website_id, "/conversations/%d?%s" % [page_number, query_parameters.join("&")])
+      else
+        resource_url = self._url_website(website_id, "/conversations/%d" % page_number)
+      end
+
+      return @parent.get(resource_url)
+    end
+
+    def list_conversations(website_id, page_number = 0)
+      return self.search_conversations(website_id, page_number)
     end
 
     def create_new_conversation(website_id, data)

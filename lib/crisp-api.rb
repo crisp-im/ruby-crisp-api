@@ -5,12 +5,12 @@
 # Author: Valerian Saliou <valerian@valeriansaliou.name>
 ##
 
-require 'rest-client'
-require 'json'
+require "rest-client"
+require "json"
 
-require_relative 'errors/route'
-require_relative 'resources/bucket'
-require_relative 'resources/website'
+require_relative "errors/route"
+require_relative "resources/bucket"
+require_relative "resources/website"
 
 module Crisp
   class Client

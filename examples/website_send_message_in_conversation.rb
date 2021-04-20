@@ -5,7 +5,7 @@
 # Author: Valerian Saliou <valerian@valeriansaliou.name>
 ##
 
-require 'crisp-api'
+require "crisp-api"
 
 client = Crisp::Client.new
 
