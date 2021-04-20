@@ -15,15 +15,15 @@ module Crisp
 
     protected
 
-    def _url_website(website_id, resource)
+    def _url_website(website_id, resource = "")
       return "/website/%s%s" % [website_id, resource]
     end
 
-    def _url_conversation(website_id, session_id, resource)
+    def _url_conversation(website_id, session_id, resource = "")
       return self._url_website(website_id, "/conversation/%s%s" % [session_id, resource])
     end
 
-    def _url_people(kind, website_id, people_id, resource)
+    def _url_people(kind, website_id, people_id, resource = "")
       return self._url_website(website_id, "/people/%s/%s%s" % [kind, people_id, resource])
     end
 
@@ -34,11 +34,11 @@ module Crisp
     end
 
     def get_website(website_id)
-      return @parent.get(self._url_website(website_id, ""))
+      return @parent.get(self._url_website(website_id))
     end
 
     def delete_website(website_id)
-      return @parent.delete(self._url_website(website_id, ""))
+      return @parent.delete(self._url_website(website_id))
     end
 
     def batch_resolve_items(website_id, data)
@@ -90,15 +90,15 @@ module Crisp
     end
 
     def check_conversation_exists(website_id, session_id)
-      return @parent.head(self._url_conversation(website_id, session_id, ""))
+      return @parent.head(self._url_conversation(website_id, session_id))
     end
 
     def get_conversation(website_id, session_id)
-      return @parent.get(self._url_conversation(website_id, session_id, ""))
+      return @parent.get(self._url_conversation(website_id, session_id))
     end
 
     def remove_conversation(website_id, session_id)
-      return @parent.remove(self._url_conversation(website_id, session_id, ""))
+      return @parent.remove(self._url_conversation(website_id, session_id))
     end
 
     def initiate_conversation_with_existing_session(website_id, session_id)
@@ -190,27 +190,27 @@ module Crisp
     end
 
     def check_people_profile_exists(website_id, people_id)
-      return @parent.head(self._url_people("profile", website_id, people_id, ""))
+      return @parent.head(self._url_people("profile", website_id, people_id))
     end
 
     def find_people_profile_by_email(website_id, email)
-      return @parent.get(self._url_people("profile", website_id, email, ""))
+      return @parent.get(self._url_people("profile", website_id, email))
     end
 
     def get_people_profile(website_id, people_id)
-      return @parent.get(self._url_people("profile", website_id, people_id, ""))
+      return @parent.get(self._url_people("profile", website_id, people_id))
     end
 
     def save_people_profile(website_id, people_id, data)
-      return @parent.put(self._url_people("profile", website_id, people_id, ""), data: data)
+      return @parent.put(self._url_people("profile", website_id, people_id), data: data)
     end
 
     def update_people_profile(website_id, people_id, data)
-      return @parent.patch(self._url_people("profile", website_id, people_id, ""), data: data)
+      return @parent.patch(self._url_people("profile", website_id, people_id), data: data)
     end
 
     def remove_people_profile(website_id, people_id)
-      return @parent.remove(self._url_people("profile", website_id, people_id, ""))
+      return @parent.remove(self._url_people("profile", website_id, people_id))
     end
 
     def list_people_conversations(website_id, people_id, page_number)
@@ -218,7 +218,7 @@ module Crisp
     end
 
     def add_people_event(website_id, people_id, data)
-      return @parent.post(self._url_people("events", website_id, people_id, ""), data: data)
+      return @parent.post(self._url_people("events", website_id, people_id), data: data)
     end
 
     def list_people_events(website_id, people_id, page_number)
@@ -226,19 +226,19 @@ module Crisp
     end
 
     def get_people_data(website_id, people_id)
-      return @parent.get(self._url_people("data", website_id, people_id, ""))
+      return @parent.get(self._url_people("data", website_id, people_id))
     end
 
     def save_people_data(website_id, people_id, data)
-      return @parent.put(self._url_people("data", website_id, people_id, ""), data: data)
+      return @parent.put(self._url_people("data", website_id, people_id), data: data)
     end
 
     def get_people_subscription_status(website_id, people_id)
-      return @parent.get(self._url_people("subscription", website_id, people_id, ""))
+      return @parent.get(self._url_people("subscription", website_id, people_id))
     end
 
     def update_people_subscription_status(website_id, people_id, data)
-      return @parent.patch(self._url_people("subscription", website_id, people_id, ""), data: data)
+      return @parent.patch(self._url_people("subscription", website_id, people_id), data: data)
     end
 
     def get_session_id_by_token(website_id, token)
