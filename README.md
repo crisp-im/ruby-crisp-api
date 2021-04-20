@@ -12,7 +12,7 @@ Copyright 2019 Crisp IM SARL. See LICENSE for copying information.
 Add the library to your `Gemfile`:
 
 ```bash
-gem "crisp-api", "~> 1.1.2"
+gem "crisp-api", "~> 1.1.3"
 ```
 
 Then, import it:
