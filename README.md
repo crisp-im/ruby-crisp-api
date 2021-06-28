@@ -12,7 +12,7 @@ Copyright 2019 Crisp IM SARL. See LICENSE for copying information.
 Add the library to your `Gemfile`:
 
 ```bash
-gem "crisp-api", "~> 1.1.3"
+gem "crisp-api", "~> 1.1.4"
 ```
 
 Then, import it:
@@ -41,6 +41,10 @@ Then, add authentication parameters to your `client` instance right after you cr
 
 ```ruby
 client = Crisp::Client.new
+
+# Make sure to use the correct tier if you are authenticating a plugin
+# eg. with a permanent token generated from Crisp Marketplace
+client.set_tier("plugin")
 
 # Authenticate to API (identifier, key)
 # eg. client.authenticate("5c0595b2-9381-4a76-a2e0-04aa00c1ede7", "3bdb0812d0f5352bf68901ddc731434dade419b98507971905acdd2f967df61c")
