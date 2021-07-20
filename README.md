@@ -5,14 +5,14 @@ The Crisp API Ruby wrapper. Authenticate, send messages, fetch conversations, ac
 Copyright 2019 Crisp IM SARL. See LICENSE for copying information.
 
 * **📝 Implements**: [Crisp Platform - API ~ v1](https://docs.crisp.chat/api/v1/) at reference revision: 12/31/2017
-* **😘 Maintainer**: [@valeriansaliou](https://github.com/valeriansaliou)
+* **😘 Maintainer**: [@valeriansaliou](https://github.com/valeriansaliou), [@eliottvincent](https://github.com/eliottvincent)
 
 ## Usage
 
 Add the library to your `Gemfile`:
 
 ```bash
-gem "crisp-api", "~> 1.1.4"
+gem "crisp-api", "~> 1.1.5"
 ```
 
 Then, import it:
@@ -88,7 +88,7 @@ client.website.send_message_in_conversation(
   * **Search Conversations**: `client.website.search_conversations(website_id, page_number, search_query, search_type, search_operator, include_empty, filter_unread, filter_resolved, filter_not_resolved, filter_mention, filter_assigned, filter_unassigned, filter_date_start, filter_date_end, order_date_created", order_date_updated)`
 
 * **Website Conversation**
-  * **Create A New Conversation**: `client.website.create_new_conversation(website_id, data)`
+  * **Create A New Conversation**: `client.website.create_new_conversation(website_id)`
   * **Check If Conversation Exists**: `client.website.check_conversation_exists(website_id, session_id)`
   * **Get A Conversation**: `client.website.get_conversation(website_id, session_id)`
   * **Remove A Conversation**: `client.website.remove_conversation(website_id, session_id)`

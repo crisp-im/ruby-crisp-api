@@ -124,8 +124,8 @@ module Crisp
       return self.search_conversations(website_id, page_number)
     end
 
-    def create_new_conversation(website_id, data)
-      return @parent.post(self._url_website(website_id, "/conversation"), data: data)
+    def create_new_conversation(website_id)
+      return @parent.post(self._url_website(website_id, "/conversation"))
     end
 
     def check_conversation_exists(website_id, session_id)

@@ -2,7 +2,7 @@ require File.expand_path("../lib/crisp-api", __FILE__)
 
 Gem::Specification.new do |s|
   s.name          = "crisp-api"
-  s.version       = "1.1.4"
+  s.version       = "1.1.5"
   s.date          = Date.today
   s.summary       = "Crisp API Ruby"
   s.description   = "Crisp API Ruby"
