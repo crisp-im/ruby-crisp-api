@@ -44,7 +44,7 @@ client = Crisp::Client.new
 
 # Make sure to use the correct tier if you are authenticating a plugin
 # eg. with a permanent token generated from Crisp Marketplace
-client.set_tier("plugin")
+# client.set_tier("plugin")
 
 # Authenticate to API (identifier, key)
 # eg. client.authenticate("5c0595b2-9381-4a76-a2e0-04aa00c1ede7", "3bdb0812d0f5352bf68901ddc731434dade419b98507971905acdd2f967df61c")
