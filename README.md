@@ -4,21 +4,21 @@ The Crisp API Ruby wrapper. Authenticate, send messages, fetch conversations, ac
 
 Copyright 2019 Crisp IM SARL. See LICENSE for copying information.
 
-* **📝 Implements**: [REST API Reference (V1)](https://docs.crisp.chat/references/rest-api/v1/) at revision: 12/31/2017
-* **😘 Maintainer**: [@valeriansaliou](https://github.com/valeriansaliou)
+* **📝 Implements**: [Crisp Platform - API ~ v1](https://docs.crisp.chat/api/v1/) at reference revision: 12/31/2017
+* **😘 Maintainer**: [@valeriansaliou](https://github.com/valeriansaliou), [@eliottvincent](https://github.com/eliottvincent)
 
 ## Usage
 
 Add the library to your `Gemfile`:
 
 ```bash
-gem 'crisp-api', '~> 1.0'
+gem "crisp-api", "~> 1.1.5"
 ```
 
 Then, import it:
 
 ```ruby
-require 'crisp-api'
+require "crisp-api"
 ```
 
 Build a new authenticated Crisp client with your `identifier` and `key` tokens.
@@ -42,6 +42,10 @@ Then, add authentication parameters to your `client` instance right after you cr
 ```ruby
 client = Crisp::Client.new
 
+# Make sure to use the correct tier if you are authenticating a plugin
+# eg. with a permanent token generated from Crisp Marketplace
+# client.set_tier("plugin")
+
 # Authenticate to API (identifier, key)
 # eg. client.authenticate("5c0595b2-9381-4a76-a2e0-04aa00c1ede7", "3bdb0812d0f5352bf68901ddc731434dade419b98507971905acdd2f967df61c")
 client.authenticate(identifier, key)
@@ -53,9 +57,9 @@ client.authenticate(identifier, key)
 
 ## Resource Methods
 
-Most useful available Crisp API resources are implemented. **Programmatic methods names are named after their label name in the [REST API Reference](https://docs.crisp.chat/references/rest-api/v1/)**.
+Most useful available Crisp API resources are implemented. **Programmatic methods names are named after their label name in the [API Reference](https://docs.crisp.chat/api/v1/)**.
 
-Thus, it is straightforward to look for them in the library while reading the [REST API Reference](https://docs.crisp.chat/references/rest-api/v1/).
+Thus, it is straightforward to look for them in the library while reading the [API Reference](https://docs.crisp.chat/api/v1/).
 
 In the following method prototypes, `crisp` is to be replaced with your Crisp API instance. For example, instanciate `client = Crisp()` and then call eg: `client.website.list_conversations(website_id, 1)`.
 
@@ -81,6 +85,7 @@ client.website.send_message_in_conversation(
 
 * **Website Conversations**
   * **List Conversations**: `client.website.list_conversations(website_id, page_number)`
+  * **Search Conversations**: `client.website.search_conversations(website_id, page_number, search_query, search_type, search_operator, include_empty, filter_unread, filter_resolved, filter_not_resolved, filter_mention, filter_assigned, filter_unassigned, filter_date_start, filter_date_end, order_date_created", order_date_updated)`
 
 * **Website Conversation**
   * **Create A New Conversation**: `client.website.create_new_conversation(website_id)`
@@ -149,10 +154,9 @@ client.website.send_message_in_conversation(
 * **Website Visitors**
   * **Count Visitors**: `client.website.count_visitors(website_id)`
   * **List Visitors**: `client.website.list_visitors(website_id, page_number)`
-  * **Get Session ID**: `client.website.get_session_id_from_token(website_id, token)`
+  * **Get Session ID**: `client.website.get_session_id_by_token(website_id, token)`
 
 ### Bucket
 
 * **Bucket URL**
   * **Generate Bucket URL**: `client.bucket.generate_bucket_url(data)`
-

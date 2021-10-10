@@ -5,12 +5,12 @@
 # Author: Valerian Saliou <valerian@valeriansaliou.name>
 ##
 
-require 'rest-client'
-require 'json'
+require "rest-client"
+require "json"
 
-require_relative 'errors/route'
-require_relative 'resources/bucket'
-require_relative 'resources/website'
+require_relative "errors/route"
+require_relative "resources/bucket"
+require_relative "resources/website"
 
 module Crisp
   class Client
@@ -22,6 +22,7 @@ module Crisp
 
     def initialize()
       @auth = {}
+      @tier = "user"
 
       @bucket = Crisp::BucketResource.new(self)
       @website = Crisp::WebsiteResource.new(self)
@@ -32,6 +33,10 @@ module Crisp
     def authenticate(identifier, key)
       @auth["identifier"] = identifier
       @auth["key"] = key
+    end
+
+    def set_tier(tier)
+      @tier = tier
     end
 
     def rest_host
@@ -86,9 +91,10 @@ module Crisp
           :payload => (data ? data.to_json : nil),
 
           :headers => {
-            :user_agent => "ruby-crisp-api/1.1.2",
+            :user_agent => "ruby-crisp-api/1.1.5",
             :accept => :json,
             :content_type => :json,
+            "X-Crisp-Tier" => @tier,
             :params => query
           }
         )
