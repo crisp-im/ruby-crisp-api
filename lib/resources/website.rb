@@ -272,6 +272,10 @@ module Crisp
       return @parent.put(self._url_people("data", website_id, people_id), data: data)
     end
 
+    def update_people_data(website_id, people_id, data)
+      return @parent.patch(self._url_people("data", website_id, people_id), data: data)
+    end
+
     def get_people_subscription_status(website_id, people_id)
       return @parent.get(self._url_people("subscription", website_id, people_id))
     end
