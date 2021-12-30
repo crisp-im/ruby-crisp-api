@@ -104,8 +104,8 @@ client.website.send_message_in_conversation(
    * `client.website.get_messages_in_conversation(website_id, session_id, query)` 
   * ⭐ **Send A Message In Conversation** [`user`, `plugin`]: [Reference](https://docs.crisp.chat/references/rest-api/v1/#send-a-message-in-conversation)
    * `client.website.send_message_in_conversation(website_id, session_id, query)` 
-  * **Update A Message In Conversation** [`user`, `plugin`]: Reference](https://docs.crisp.chat/references/rest-api/v1/#update-a-message-in-conversation)
-   * `client.website.update_message_in_conversation(website_id, session_id, fingerprint, data)` [
+  * **Update A Message In Conversation** [`user`, `plugin`]: [Reference](https://docs.crisp.chat/references/rest-api/v1/#update-a-message-in-conversation)
+   * `client.website.update_message_in_conversation(website_id, session_id, fingerprint, data)` 
   * **Compose A Message In Conversation** [`user`, `plugin`]: [Reference](https://docs.crisp.chat/references/rest-api/v1/#compose-a-message-in-conversation)
    * `client.website.compose_message_in_conversation(website_id, session_id, data)` 
   * ⭐ **Mark Messages As Read In Conversation** [`user`, `plugin`]: [Reference](https://docs.crisp.chat/references/rest-api/v1/#mark-messages-as-read-in-conversation)
@@ -160,8 +160,8 @@ client.website.send_message_in_conversation(
    * `client.website.list_people_conversations(website_id, people_id, page_number)` 
   + **Add A People Event** [`user`, `plugin`]: [Reference](https://docs.crisp.chat/references/rest-api/v1/#add-a-people-event)
    * `client.website.add_people_event(website_id, people_id, data)` 
-  + **List People Events** [`user`, `plugin`]: Reference](https://docs.crisp.chat/references/rest-api/v1/#list-people-events)
-   * `client.website.list_people_events(website_id, people_id, page_number)` [
+  + **List People Events** [`user`, `plugin`]: [Reference](https://docs.crisp.chat/references/rest-api/v1/#list-people-events)
+   * `client.website.list_people_events(website_id, people_id, page_number)` 
   + **Get People Data** [`user`, `plugin`]: [Reference](https://docs.crisp.chat/references/rest-api/v1/#get-people-data)
    * `client.website.get_people_data(website_id, people_id)` 
   + **Save People Data** [`user`, `plugin`]: [Reference](https://docs.crisp.chat/references/rest-api/v1/#save-people-data)
