@@ -23,7 +23,7 @@ data = client.website.send_message_in_conversation(
 
   {
     "type" => "text",
-    "content" => "This message was sent from python-crisp-api! :)",
+    "content" => "This message was sent from ruby-crisp-api! :)",
     "from" => "operator",
     "origin" => "chat"
   }
