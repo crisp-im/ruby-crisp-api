@@ -2,7 +2,7 @@
 
 The Crisp API Ruby wrapper. Authenticate, send messages, fetch conversations, access your agent accounts from your Ruby code.
 
-Copyright 2019 Crisp IM SARL. See LICENSE for copying information.
+Copyright 2019 Crisp IM SAS. See LICENSE for copying information.
 
 * **📝 Implements**: [REST API Reference (V1)](https://docs.crisp.chat/references/rest-api/v1/) at revision: 12/31/2017
 * **😘 Maintainer**: [@valeriansaliou](https://github.com/valeriansaliou), [@eliottvincent](https://github.com/eliottvincent)
