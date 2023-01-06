@@ -1,8 +1,10 @@
 # ruby-crisp-api
 
+[![Build and Release](https://github.com/crisp-im/ruby-crisp-api/workflows/Build%20and%20Release/badge.svg)](https://github.com/crisp-im/ruby-crisp-api/actions?query=workflow%3A%22Build+and+Release%22) [![NPM](https://img.shields.io/gem/v/crisp-api.svg)](https://rubygems.org/gems/crisp-api) [![Downloads](https://img.shields.io/gem/dt/crisp-api.svg)](https://rubygems.org/gems/crisp-api)
+
 The Crisp API Ruby wrapper. Authenticate, send messages, fetch conversations, access your agent accounts from your Ruby code.
 
-Copyright 2019 Crisp IM SAS. See LICENSE for copying information.
+Copyright 2023 Crisp IM SAS. See LICENSE for copying information.
 
 * **📝 Implements**: [REST API Reference (V1)](https://docs.crisp.chat/references/rest-api/v1/) at revision: 12/31/2017
 * **😘 Maintainer**: [@valeriansaliou](https://github.com/valeriansaliou), [@eliottvincent](https://github.com/eliottvincent)
