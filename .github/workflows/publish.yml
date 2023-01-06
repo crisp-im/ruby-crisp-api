@@ -1,0 +1,34 @@
+on: push
+
+name: Publish
+
+jobs:
+  publish:
+    runs-on: ubuntu-20.04
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: test
+    steps:
+      - name: Checkout
+        id: checkout
+        uses: actions/checkout@v3
+
+      - name: Install Ruby
+        id: install_ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "2.7"
+
+      - name: Install dependencies
+        id: install_dependencies
+        run: |
+          bundle install
+
+      - name: Build
+        id: build
+        run: |
+          gem build crisp-api.gemspec
+
+      - name: Publish
+        id: publish
+        run: |
+          gem push crisp-api-*.gem
