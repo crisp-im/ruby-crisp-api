@@ -24,10 +24,6 @@ jobs:
         run: |
           bundle install
 
-      - name: Get current tag
-        id: current_tag
-        uses: WyriHaximus/github-action-get-previous-tag@v1
-
       - name: Build
         id: build
         run: |
@@ -36,6 +32,6 @@ jobs:
       - name: Publish
         id: publish
         run: |
-          gem push crisp-api-${{ steps.current_tag.outputs.tag }}.gem
+          gem push crisp-api-*.gem
         env:
           GEM_HOST_API_KEY: ${{ secrets.GEM_HOST_API_KEY }}
