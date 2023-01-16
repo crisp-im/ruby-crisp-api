@@ -16,7 +16,7 @@ You may follow the [REST API Quickstart](https://docs.crisp.chat/guides/rest-api
 Add the library to your `Gemfile`:
 
 ```bash
-gem "crisp-api", "~> 1.1.10"
+gem "crisp-api", "~> 1.1.11"
 ```
 
 Then, import it:
