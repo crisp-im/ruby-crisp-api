@@ -192,6 +192,10 @@ module Crisp
       return @parent.get(self._url_conversation(website_id, session_id, "/events/%d" % page_number))
     end
 
+    def list_conversation_files(website_id, session_id, page_number)
+      return @parent.get(self._url_conversation(website_id, session_id, "/files/%d" % page_number))
+    end
+
     def get_conversation_state(website_id, session_id)
       return @parent.get(self._url_conversation(website_id, session_id, "/state"))
     end
