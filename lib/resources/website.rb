@@ -22,7 +22,6 @@ module Crisp
       "filter_unassigned",
       "filter_date_start",
       "filter_date_end",
-      "filter_date_end",
       "order_date_created",
       "order_date_updated",
     ]
