@@ -1,23 +1,28 @@
+name: Build and Release
+
 on:
   push:
     tags:
       - "v*.*.*"
 
-name: Build and Release
-
 jobs:
   release:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        ruby-version: ['2.7', '3.0', '3.1', '3.2']
+
     steps:
       - name: Checkout
         id: checkout
         uses: actions/checkout@v3
 
-      - name: Install Ruby
+      - name: Install Ruby ${{ matrix.ruby-version }}
         id: install_ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "2.7"
+          ruby-version: ${{ matrix.ruby-version }}
 
       - name: Install dependencies
         id: install_dependencies
