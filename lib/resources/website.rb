@@ -26,6 +26,16 @@ module Crisp
       "order_date_updated",
     ]
 
+    ACQUIRE_ANALYTICS_POINTS_QUERY_PARAMETERS = [
+      "date_from",
+      "date_to",
+      "date_split",
+      "classifier",
+      "filter_primary",
+      "filter_secondary",
+      "filter_tertiary",
+    ]
+
     def initialize(parent)
       @parent = parent
     end
@@ -287,8 +297,29 @@ module Crisp
       return @parent.patch(self._url_people("subscription", website_id, people_id), data: data)
     end
 
-    def get_session_id_by_token(website_id, token)
-      return @parent.get(self._url_website(website_id, "/visitors/token/#{token}"))
+    def get_session_id_by_token(website_id, token_id)
+      return @parent.get(self._url_website(website_id, "/visitors/token/#{token_id}"))
+    end
+
+    def acquire_analytics_points(website_id, type, metric, date_from = "", date_to = "", date_split = "", classifier = "", filter_primary = "", filter_secondary = "", filter_tertiary = "")
+      resource_url = ""
+      query_parameters = []
+
+      ACQUIRE_ANALYTICS_POINTS_QUERY_PARAMETERS.each do |parameter|
+        parameter_value = binding.local_variable_get(parameter)
+
+        if parameter_value != ""
+          query_parameters.push("%s=%s" % [parameter, CGI.escape(parameter_value).gsub("+", "%20")])
+        end
+      end
+
+      if query_parameters != []
+        resource_url = self._url_website(website_id, "/analytics/%s/%s/points?%s" % [type, metric, query_parameters.join("&")])
+      else
+        resource_url = self._url_website(website_id, "/analytics/%s/%s/points" % [type, metric])
+      end
+
+      return @parent.get(resource_url)
     end
   end
 end
