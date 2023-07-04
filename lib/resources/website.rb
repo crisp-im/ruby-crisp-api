@@ -36,6 +36,11 @@ module Crisp
       "filter_tertiary",
     ]
 
+    LIST_ANALYTICS_FILTERS_QUERY_PARAMETERS = [
+      "date_from",
+      "date_to",
+    ]
+
     def initialize(parent)
       @parent = parent
     end
@@ -317,6 +322,27 @@ module Crisp
         resource_url = self._url_website(website_id, "/analytics/%s/%s/points?%s" % [type, metric, query_parameters.join("&")])
       else
         resource_url = self._url_website(website_id, "/analytics/%s/%s/points" % [type, metric])
+      end
+
+      return @parent.get(resource_url)
+    end
+
+    def list_analytics_filters(website_id, type, metric, page_number = 1, date_from = "", date_to = "")
+      resource_url = ""
+      query_parameters = []
+
+      LIST_ANALYTICS_FILTERS_QUERY_PARAMETERS.each do |parameter|
+        parameter_value = binding.local_variable_get(parameter)
+
+        if parameter_value != ""
+          query_parameters.push("%s=%s" % [parameter, CGI.escape(parameter_value).gsub("+", "%20")])
+        end
+      end
+
+      if query_parameters != []
+        resource_url = self._url_website(website_id, "/analytics/%s/%s/filters/%d?%s" % [type, metric, page_number, query_parameters.join("&")])
+      else
+        resource_url = self._url_website(website_id, "/analytics/%s/%s/filters/%d" % [type, metric, page_number])
       end
 
       return @parent.get(resource_url)
