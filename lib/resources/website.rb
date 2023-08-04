@@ -26,6 +26,19 @@ module Crisp
       "order_date_updated",
     ]
 
+    SEARCH_HELPDESK_ARTICLES_QUERY_PARAMETERS = [
+      "order_visits",
+      "search_title",
+      "filter_category_id",
+      "filter_section_id",
+      "filter_status_published",
+      "filter_status_draft",
+      "filter_visibility_visible",
+      "filter_visibility_hidden",
+      "filter_date_start",
+      "filter_date_end",
+    ]
+
     def initialize(parent)
       @parent = parent
     end
@@ -121,6 +134,31 @@ module Crisp
 
     def list_conversations(website_id, page_number = 1)
       return self.search_conversations(website_id, page_number)
+    end
+
+    def search_helpdesk_articles(website_id, locale, page_number = 1, order_visits = "", search_title = "", filter_category_id = "", filter_section_id = "", filter_status_published = "", filter_status_draft = "", filter_visibility_visible = "", filter_visibility_hidden = "", filter_date_start = "", filter_date_end="")
+      resource_url = ""
+      query_parameters = []
+
+      SEARCH_HELPDESK_ARTICLES_QUERY_PARAMETERS.each do |parameter|
+        parameter_value = binding.local_variable_get(parameter)
+
+        if parameter_value != ""
+          query_parameters.push("%s=%s" % [parameter, CGI.escape(parameter_value).gsub("+", "%20")])
+        end
+      end
+
+      if query_parameters != []
+        resource_url = self._url_website(website_id, "/helpdesk/locale/%s/articles/%d?%s" % [locale, page_number, query_parameters.join("&")])
+      else
+        resource_url = self._url_website(website_id, "/helpdesk/locale/%s/articles/%d" % [locale, page_number])
+      end
+
+      return @parent.get(resource_url)
+    end
+
+    def list_helpdesk_articles(website_id, locale, page_number = 1)
+      return self.search_helpdesk_articles(website_id, locale, page_number)
     end
 
     def create_new_conversation(website_id)
