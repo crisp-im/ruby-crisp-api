@@ -30,7 +30,7 @@ Build a new authenticated Crisp client with your `identifier` and `key` tokens.
 ```ruby
 client = Crisp::Client.new
 
-client.set_tier("plugin")
+client.set_tier(tier)
 client.authenticate(identifier, key)
 ```
 
