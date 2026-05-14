@@ -75,12 +75,36 @@ module Crisp
       return @parent.patch(self._url_website(website_id, "/batch/resolve"), data: data)
     end
 
+    def batch_unresolve_items(website_id, data)
+      return @parent.patch(self._url_website(website_id, "/batch/unresolve"), data: data)
+    end
+
     def batch_read_items(website_id, data)
       return @parent.patch(self._url_website(website_id, "/batch/read"), data: data)
     end
 
+    def batch_unread_items(website_id, data)
+      return @parent.patch(self._url_website(website_id, "/batch/unread"), data: data)
+    end
+
     def batch_remove_items(website_id, data)
       return @parent.patch(self._url_website(website_id, "/batch/remove"), data: data)
+    end
+
+    def batch_report_items(website_id, data)
+      return @parent.post(self._url_website(website_id, "/batch/report"), data: data)
+    end
+
+    def batch_block_items(website_id, data)
+      return @parent.patch(self._url_website(website_id, "/batch/block"), data: data)
+    end
+
+    def batch_routing_items(website_id, data)
+      return @parent.patch(self._url_website(website_id, "/batch/routing"), data: data)
+    end
+
+    def batch_inbox_items(website_id, data)
+      return @parent.patch(self._url_website(website_id, "/batch/inbox"), data: data)
     end
 
     def get_website_availability_status(website_id)
