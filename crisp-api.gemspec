@@ -3,7 +3,7 @@ require "date"
 
 Gem::Specification.new do |s|
   s.name          = "crisp-api"
-  s.version       = "1.1.13"
+  s.version       = "1.1.14"
   s.date          = Date.today
   s.summary       = "Crisp API Ruby"
   s.description   = "Crisp API Ruby"
