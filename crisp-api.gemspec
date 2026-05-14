@@ -1,4 +1,5 @@
 require File.expand_path("../lib/crisp-api", __FILE__)
+require "date"
 
 Gem::Specification.new do |s|
   s.name          = "crisp-api"
