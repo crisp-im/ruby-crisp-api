@@ -107,6 +107,14 @@ module Crisp
       return @parent.patch(self._url_website(website_id, "/batch/inbox"), data: data)
     end
 
+    def batch_data_items(website_id, data)
+      return @parent.patch(self._url_website(website_id, "/batch/data"), data: data)
+    end
+
+    def batch_segments_items(website_id, data)
+      return @parent.patch(self._url_website(website_id, "/batch/segments"), data: data)
+    end
+
     def get_website_availability_status(website_id)
       return @parent.get(self._url_website(website_id, "/availability/status"))
     end
