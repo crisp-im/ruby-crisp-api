@@ -5,8 +5,6 @@
 # Author: Valerian Saliou <valerian@valeriansaliou.name>
 ##
 
-require "rest-client"
-
 module Crisp
   class WebsiteResource
     SEARCH_CONVERSATIONS_QUERY_PARAMETERS = [
