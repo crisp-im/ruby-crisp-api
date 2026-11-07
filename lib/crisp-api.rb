@@ -5,7 +5,7 @@
 # Author: Valerian Saliou <valerian@valeriansaliou.name>
 ##
 
-require "rest-client"
+require "faraday"
 require "json"
 
 require_relative "errors/route"
@@ -79,34 +79,43 @@ module Crisp
 
     def _do_request(method, resource, query: nil, data: nil)
       begin
-        response = RestClient::Request.execute(
-          :url => self._prepare_rest_url(resource),
-          :method => method,
-          :timeout => self.timeout,
-          :verify_ssl => OpenSSL::SSL::VERIFY_PEER,
+        connection = Faraday.new(
+          :request => {
+            :timeout => self.timeout,
+            :open_timeout => self.timeout
+          },
+          :ssl => { :verify => true }
+        ) do |builder|
+          if @auth["identifier"]
+            builder.request :authorization, :basic, @auth["identifier"], @auth["key"]
+          end
+          builder.adapter :net_http
+        end
 
-          :user => @auth["identifier"],
-          :password => @auth["key"],
-
-          :payload => (data ? data.to_json : nil),
-
-          :headers => {
-            :user_agent => "ruby-crisp-api/1.1.16",
-            :accept => :json,
-            :content_type => :json,
-            "X-Crisp-Tier" => @tier,
-            :params => query
+        response = connection.run_request(
+          method,
+          self._prepare_rest_url(resource),
+          data ? data.to_json : nil,
+          {
+            "User-Agent" => "ruby-crisp-api/1.1.16",
+            "Accept" => "application/json",
+            "Content-Type" => "application/json",
+            "X-Crisp-Tier" => @tier
           }
-        )
-      rescue RestClient::ExceptionWithResponse => error
-        response = error.response
-      rescue
-        response = nil
+        ) do |request|
+          request.params.update(query) if query
+        end
+      rescue Faraday::ConnectionFailed, Faraday::TimeoutError, Faraday::SSLError
+        raise RouteError, "http_error"
       end
 
       if response && method != :head
-        result = JSON.parse(response)
-      elsif response and method == :head and response.code == 200
+        begin
+          result = JSON.parse(response.body)
+        rescue JSON::ParserError
+          raise RouteError, "http_error"
+        end
+      elsif response and method == :head and response.status == 200
         result = {}
       else
         result = {

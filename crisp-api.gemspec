@@ -1,4 +1,3 @@
-require File.expand_path("../lib/crisp-api", __FILE__)
 require "date"
 
 Gem::Specification.new do |s|
@@ -13,6 +12,7 @@ Gem::Specification.new do |s|
   s.homepage      = "https://github.com/crisp-im/ruby-crisp-api"
   s.license       = "MIT"
   s.require_paths = ["lib"]
+  s.required_ruby_version = ">= 2.7"
 
-  s.add_dependency "rest-client", "~> 2.0"
+  s.add_dependency "faraday", "~> 2.0"
 end
