@@ -1080,6 +1080,35 @@ _👉 Notice: The `peopleID` argument can be an email or the `peopleID`._
       </details>
 
 
+* **Website Helpdesk**
+  * **List Helpdesk Pages**: [Reference](https://docs.crisp.chat/references/rest-api/v1/#list-helpdesk-pages)
+    * `client.website.list_helpdesk_pages(website_id, locale, type, page_number = 1)`
+    * Lists published, publicly visible pages. Content types: `articles`, `guides`, `references`, `news`.
+
+      ```ruby
+      client.website.list_helpdesk_pages(website_id, "en", "articles", 1)
+      ```
+
+
+* **Website Analytics**
+  * **Generate Analytics**: [Reference](https://docs.crisp.chat/references/rest-api/v1/#generate-analytics)
+    * `client.website.generate_analytics(website_id, data)`
+
+      ```ruby
+      client.website.generate_analytics(website_id, {
+        "metric" => "helpdesk_read",
+        "type" => "total",
+        "split_by" => "article_id",
+        "date" => {
+          "from" => "1970-01-01",
+          "to" => Time.now.utc.strftime('%F %T'),
+          "split" => "all",
+          "timezone" => "Etc/UTC"
+        }
+      })
+      ```
+
+
 ### Bucket
 
 * **Bucket URL**
