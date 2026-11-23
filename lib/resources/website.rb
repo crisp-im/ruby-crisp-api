@@ -360,5 +360,13 @@ module Crisp
     def list_helpdesk_articles(website_id, locale, page_number = 1)
       return self.search_helpdesk_articles(website_id, locale, page_number)
     end
+
+    def list_helpdesk_pages(website_id, locale, type, page_number = 1)
+      return @parent.get(self._url_website(website_id, "/helpdesk/page/list/%s/%s/%d" % [locale, type, page_number]))
+    end
+
+    def generate_analytics(website_id, data)
+      return @parent.post(self._url_website(website_id, "/analytics/generate"), data: data)
+    end
   end
 end
