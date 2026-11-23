@@ -5,8 +5,6 @@
 # Author: Valerian Saliou <valerian@valeriansaliou.name>
 ##
 
-require "rest-client"
-
 module Crisp
   class BucketResource
     def initialize(parent)
