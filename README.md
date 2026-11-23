@@ -1084,29 +1084,40 @@ _👉 Notice: The `peopleID` argument can be an email or the `peopleID`._
   * **List Helpdesk Pages**: [Reference](https://docs.crisp.chat/references/rest-api/v1/#list-helpdesk-pages)
     * `client.website.list_helpdesk_pages(website_id, locale, type, page_number = 1)`
     * Lists published, publicly visible pages. Content types: `articles`, `guides`, `references`, `news`.
+    * <details>
+      <summary>See Example</summary>
 
       ```ruby
-      client.website.list_helpdesk_pages(website_id, "en", "articles", 1)
+      website_id = "8c842203-7ed8-4e29-a608-7cf78a7d2fcc"
+
+      client.website.list_helpdesk_pages(website_id, "en", "articles", 1);
       ```
+      </details>
 
 
 * **Website Analytics**
   * **Generate Analytics**: [Reference](https://docs.crisp.chat/references/rest-api/v1/#generate-analytics)
     * `client.website.generate_analytics(website_id, data)`
+    * <details>
+      <summary>See Example</summary>
 
       ```ruby
-      client.website.generate_analytics(website_id, {
+      website_id = "8c842203-7ed8-4e29-a608-7cf78a7d2fcc"
+      data = {
         "metric" => "helpdesk_read",
         "type" => "total",
         "split_by" => "article_id",
         "date" => {
-          "from" => "1970-01-01",
-          "to" => Time.now.utc.strftime('%F %T'),
+          "from" => "2026-10-01T00:00:00Z",
+          "to" => "2026-11-01T00:00:00Z",
           "split" => "all",
           "timezone" => "Etc/UTC"
         }
-      })
+      }
+
+      client.website.generate_analytics(website_id, data);
       ```
+      </details>
 
 
 ### Bucket
